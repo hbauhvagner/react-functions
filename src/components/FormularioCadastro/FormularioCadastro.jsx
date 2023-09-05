@@ -3,11 +3,11 @@ import { Button, TextField } from "@mui/material";
 export default function FormularioCadastro() {
     return (
         <form>
-            <TextField id="nome" label="Nome" fullWidth />
+            <TextField id="nome" label="Nome" margin="normal" fullWidth />
 
-            <TextField id="sobrenome" label="Sobrenome" fullWidth />
+            <TextField id="sobrenome" label="Sobrenome" margin="normal" fullWidth />
 
-            <TextField id="cpf" label="CPF" fullWidth />
+            <TextField id="cpf" label="CPF" margin="normal" fullWidth />
 
             <label>Promoções</label>
             <input type="checkbox" />
