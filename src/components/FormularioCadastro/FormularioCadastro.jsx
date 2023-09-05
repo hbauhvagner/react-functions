@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, FormControlLabel, Switch, TextField } from "@mui/material";
 
 export default function FormularioCadastro() {
     return (
@@ -9,11 +9,15 @@ export default function FormularioCadastro() {
 
             <TextField id="cpf" label="CPF" margin="normal" fullWidth />
 
-            <label>Promoções</label>
-            <input type="checkbox" />
+            <FormControlLabel 
+                label="Promoções" 
+                control={<Switch name="promoções" defaultChecked />} 
+            />
 
-            <label>Novidades</label>
-            <input type="checkbox" />
+            <FormControlLabel
+                label="Novidades"
+                control={<Switch name="novidades" defaultChecked />}
+            />
 
             <Button 
                 type="submit"
