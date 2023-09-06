@@ -1,13 +1,41 @@
 import { Button, FormControlLabel, Switch, TextField } from "@mui/material";
 
 export default function FormularioCadastro() {
+    let nome = '';
+
     return (
-        <form>
-            <TextField id="nome" label="Nome" margin="normal" fullWidth />
+        <form onSubmit={event => {
+            event.preventDefault();
+            console.log(nome);
+        }}>
+            <TextField 
+                value={nome}
+                onChange={event => {
+                    nome = event.target.value;
 
-            <TextField id="sobrenome" label="Sobrenome" margin="normal" fullWidth />
+                    if (nome.length > 3) {
+                        nome = nome.substring(0, 3);
+                    }
+                }}
+                id="nome" 
+                label="Nome" 
+                margin="normal" 
+                fullWidth 
+            />
 
-            <TextField id="cpf" label="CPF" margin="normal" fullWidth />
+            <TextField 
+                id="sobrenome" 
+                label="Sobrenome" 
+                margin="normal" 
+                fullWidth 
+            />
+
+            <TextField 
+                id="cpf" 
+                label="CPF" 
+                margin="normal" 
+                fullWidth 
+            />
 
             <FormControlLabel 
                 label="Promoções" 
