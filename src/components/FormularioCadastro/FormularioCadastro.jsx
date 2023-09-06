@@ -1,7 +1,8 @@
 import { Button, FormControlLabel, Switch, TextField } from "@mui/material";
+import { useState } from "react";
 
 export default function FormularioCadastro() {
-    let nome = '';
+    const [nome, setNome] = useState('Vagner');
 
     return (
         <form onSubmit={event => {
@@ -13,7 +14,7 @@ export default function FormularioCadastro() {
                 onChange={event => {
                     nome = event.target.value;
 
-                    if (nome.length > 3) {
+                    if (nome.length >= 3) {
                         nome = nome.substring(0, 3);
                     }
                 }}
