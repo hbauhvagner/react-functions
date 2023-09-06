@@ -1,8 +1,8 @@
 import { Button, FormControlLabel, Switch, TextField } from "@mui/material";
 import { useState } from "react";
 
-export default function FormularioCadastro() {
-    const [nome, setNome] = useState('Vagner');
+export default function FormularioCadastro({ aoEnviar }) {
+    const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [cpf, setCpf] = useState('');
     const [promocoes, setPromocoes] = useState(true);
@@ -11,7 +11,7 @@ export default function FormularioCadastro() {
     return (
         <form onSubmit={event => {
             event.preventDefault();
-            console.log(nome, sobrenome, cpf, promocoes, novidades);
+            aoEnviar({nome, sobrenome, cpf, promocoes, novidades});
         }}>
             <TextField 
                 value={nome}
