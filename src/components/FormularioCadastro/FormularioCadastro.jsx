@@ -3,20 +3,23 @@ import { useState } from "react";
 
 export default function FormularioCadastro() {
     const [nome, setNome] = useState('Vagner');
+    const [sobrenome, setSobrenome] = useState('');
 
     return (
         <form onSubmit={event => {
             event.preventDefault();
-            console.log(nome);
+            console.log(nome, sobrenome);
         }}>
             <TextField 
                 value={nome}
                 onChange={event => {
-                    nome = event.target.value;
-
-                    if (nome.length >= 3) {
-                        nome = nome.substring(0, 3);
+                    let tmpNome = event.target.value;
+                    if (tmpNome.length >= 3) {
+                        tmpNome = tmpNome.substring(0, 3);
                     }
+
+                    setNome(event.target.value);
+                    
                 }}
                 id="nome" 
                 label="Nome" 
@@ -25,6 +28,10 @@ export default function FormularioCadastro() {
             />
 
             <TextField 
+                value={sobrenome}
+                onChange={event => {
+                    setSobrenome(event.target.value);
+                }}
                 id="sobrenome" 
                 label="Sobrenome" 
                 margin="normal" 
