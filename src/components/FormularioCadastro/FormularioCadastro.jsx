@@ -4,22 +4,19 @@ import { useState } from "react";
 export default function FormularioCadastro() {
     const [nome, setNome] = useState('Vagner');
     const [sobrenome, setSobrenome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [promocoes, setPromocoes] = useState(true);
+    const [novidades, setNovidades] = useState(true);
 
     return (
         <form onSubmit={event => {
             event.preventDefault();
-            console.log(nome, sobrenome);
+            console.log(nome, sobrenome, cpf, promocoes, novidades);
         }}>
             <TextField 
                 value={nome}
                 onChange={event => {
-                    let tmpNome = event.target.value;
-                    if (tmpNome.length >= 3) {
-                        tmpNome = tmpNome.substring(0, 3);
-                    }
-
                     setNome(event.target.value);
-                    
                 }}
                 id="nome" 
                 label="Nome" 
@@ -39,6 +36,10 @@ export default function FormularioCadastro() {
             />
 
             <TextField 
+                value={cpf}
+                onChange={event => {
+                    setCpf(event.target.value);
+                }}
                 id="cpf" 
                 label="CPF" 
                 margin="normal" 
@@ -47,12 +48,20 @@ export default function FormularioCadastro() {
 
             <FormControlLabel 
                 label="Promoções" 
-                control={<Switch name="promoções" defaultChecked />} 
+                control={<Switch
+                    checked={promocoes}
+                    onChange={event => {
+                    setPromocoes(event.target.checked);
+                }} name="promoções" />} 
             />
 
             <FormControlLabel
                 label="Novidades"
-                control={<Switch name="novidades" defaultChecked />}
+                control={<Switch
+                    checked={novidades}
+                    onChange={event => {
+                    setNovidades(event.target.checked);
+                }} name="novidades" />}
             />
 
             <Button 
